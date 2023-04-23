@@ -1,0 +1,87 @@
+{
+  "name": "vscode-plugin-brkill",
+  "displayName": "vscode-plugin-brkill",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.22.x"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:itemClick",
+    "onView:brkill-item"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "menus": {
+      "view/title": [
+        {
+          "command": "vscode-plugin-brkill.refreshEntry",
+          "when": "view == brkill-item",
+          "group": "navigation"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vscode-plugin-brkill.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "vscode-plugin-brkill.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "brkill",
+          "title": "BranchKill",
+          "icon": "resources/dark/branch.svg"
+        }
+      ]
+    },
+    "views": {
+      "brkill": [
+        {
+          "id": "brkill-item",
+          "name": "BranchKill",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.77.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
