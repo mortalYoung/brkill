@@ -26,10 +26,6 @@
     },
     "commands": [
       {
-        "command": "vscode-plugin-brkill.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "vscode-plugin-brkill.refreshEntry",
         "title": "Refresh",
         "icon": {
